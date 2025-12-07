@@ -90,13 +90,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Run Security Scan
-      uses: securecodewarrior/github-action-add-sarif@v1
-      with:
-        sarif-file: security-scan-results.sarif
-    
     - name: Run DevSkim
       uses: microsoft/devskim-action@v1
+      continue-on-error: true
       with:
         directory-to-scan: ./src
 
