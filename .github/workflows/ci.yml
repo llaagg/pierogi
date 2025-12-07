@@ -72,17 +72,13 @@ jobs:
       run: |
         git clone https://github.com/kklash/mnemonikey.git /tmp/mnemonikey-go
         cd /tmp/mnemonikey-go
-        go build -o mnemonikey ./cmd/mnemonikey
+        go build -o /tmp/go-mnemonikey/mnemonikey ./cmd/mnemonikey
     
     - name: Build C# implementation
-      run: |
-        dotnet build --configuration Release
-        dotnet publish src/MnemonikeyCs.Cli/MnemonikeyCs.Cli.csproj -c Release -o ./publish
+      run: dotnet build --configuration Release
     
     - name: Run compatibility tests
-      run: |
-        # This will run tests that verify C# can decode what Go generates and vice versa
-        dotnet test tests/MnemonikeyCs.Tests/MnemonikeyCs.Tests.csproj --filter Category=Compatibility
+      run: dotnet test tests/MnemonikeyCs.IntegrationTests/MnemonikeyCs.IntegrationTests.csproj --configuration Release --no-build --verbosity normal
 
   security-scan:
     name: Security Scan

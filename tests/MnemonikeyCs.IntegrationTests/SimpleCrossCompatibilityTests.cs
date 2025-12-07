@@ -30,7 +30,7 @@ public class SimpleCrossCompatibilityTests : IDisposable
         }
     }
 
-    [Fact(Skip = "Requires Go mnemonikey binary")]
+    [Fact]
     public async Task GoGeneratedMnemonic_CanBeDecodedByCSharp()
     {
         var tempWordFile = Path.Combine(_tempDir, "go-words.txt");
@@ -61,7 +61,7 @@ public class SimpleCrossCompatibilityTests : IDisposable
         _output.WriteLine($"C# decoded time: {creationTime}");
     }
 
-    [Fact(Skip = "Requires Go mnemonikey binary")]
+    [Fact]
     public async Task CSharpGeneratedMnemonic_CanBeUsedByGo()
     {
         // Generate using C#
@@ -91,7 +91,7 @@ public class SimpleCrossCompatibilityTests : IDisposable
         _output.WriteLine("Go successfully recovered from C# generated mnemonic");
     }
 
-    [Fact(Skip = "Requires Go mnemonikey binary")]
+    [Fact]
     public async Task EncryptedMnemonic_CrossCompatibility()
     {
         var password = "test-password-123";
@@ -129,7 +129,7 @@ public class SimpleCrossCompatibilityTests : IDisposable
         decodedTime.Should().BeCloseTo(creationTime, TimeSpan.FromSeconds(1));
     }
 
-    [Theory(Skip = "Requires Go mnemonikey binary")]
+    [Theory]
     [InlineData("0123456789abcdef0123456789abcdef")]
     [InlineData("ffffffffffffffffffffffffffffffff")]
     [InlineData("00000000000000000000000000000000")]
@@ -163,7 +163,7 @@ public class SimpleCrossCompatibilityTests : IDisposable
         _output.WriteLine($"✓ Known seed {hexSeed} validated with both Go and C#");
     }
 
-    [Fact(Skip = "Requires Go mnemonikey binary")]
+    [Fact]
     public async Task WordValidation_BothImplementationsAgree()
     {
         // Test with some valid and invalid words
