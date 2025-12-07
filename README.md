@@ -185,4 +185,4 @@ This project is licensed under the same terms as the original mnemonikey project
 - Original mnemonikey implementation by [@kklash](https://github.com/kklash)
 - Wordlist4096 project
 - .NET cryptographic libraries maintainers
-- Migration from go to C# done by [@markBlah](https://github.com/MarkBlah)
+- Migration from go to C# done by [@MarkBlah](https://github.com/MarkBlah)
