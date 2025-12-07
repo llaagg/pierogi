@@ -36,12 +36,7 @@ jobs:
     
     - name: Test
       run: |
-        if [ "${{ matrix.os }}" = "macos-latest" ]; then
-          # Skip integration tests on macOS (require Go binary)
-          dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --settings coverlet.runsettings --logger "console;verbosity=minimal" --filter "FullyQualifiedName!~IntegrationTests" -- RunConfiguration.TestSessionTimeout=600000
-        else
-          dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --settings coverlet.runsettings --logger "console;verbosity=minimal" -- RunConfiguration.TestSessionTimeout=600000
-        fi
+        dotnet test --no-build --configuration Release --verbosity normal --collect:"XPlat Code Coverage" --settings coverlet.runsettings --logger "console;verbosity=minimal" -- RunConfiguration.TestSessionTimeout=600000
       shell: bash
       env:
         DOTNET_CLI_UI_LANGUAGE: en-US
